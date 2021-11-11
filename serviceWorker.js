@@ -12,16 +12,20 @@ const assets = [
   "/images/coffee6.jpg",
   "/images/coffee7.jpg",
   "/images/coffee8.jpg",
-  "/images/coffee9.jpg"
+  "/images/coffee9.jpg",
+  "sw.js",
 ];
 
 self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
     caches.open(staticDevCoffee).then(cache => {
       cache.addAll(assets);
+      
     })
   );
 });
+
+
 
 self.addEventListener("fetch", fetchEvent => {
   fetchEvent.respondWith(
@@ -30,3 +34,17 @@ self.addEventListener("fetch", fetchEvent => {
     })
   );
 });
+
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.open('mysite-dynamic').then(function(cache) {
+      return cache.match(event.request).then(function (response) {
+        return response || fetch(event.request).then(function(response) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
+    })
+  );
+});
+
