@@ -39,9 +39,7 @@ function takePhoto() {
     alert('ImageCapture is not available');
     return;
   }
-  
- 
-  
+
   var theImageCapturer = new ImageCapture(theStream.getVideoTracks()[0]);
 
   theImageCapturer.takePhoto()
@@ -53,9 +51,10 @@ function takePhoto() {
 }
 
 function bildSpeichern() {
-  bannerImage = document.getElementById('imgTag');
+  bannerImage = document.getElementById('imageTag');
   imgData = getBase64Image(bannerImage);
   localStorage.setItem("myPic", imgData);
+  console.log(imgData);
 }
 
 function getBase64Image(img) {
