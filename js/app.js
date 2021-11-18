@@ -164,6 +164,7 @@ function getReadFile(reader, i) {
     var li = document.querySelector('[data-idx="' + i + '"]');
 
     li.innerHTML += 'File starts with "' + reader.result.substr(0, 25) + '"';
+    localStorage.setItem(li, reader.result.substr(0,25));
   }
 }
 
