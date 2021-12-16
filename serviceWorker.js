@@ -38,38 +38,37 @@
 //   );
 // });
 
-function createDB() {
-  idb.open('products', 1, function(upgradeDB) {
-    var store = upgradeDB.createObjectStore('beverages', {
-      keyPath: 'id'
-    });
-    store.put({id: 123, name: 'coke', price: 10.99, quantity: 200});
-    store.put({id: 321, name: 'pepsi', price: 8.99, quantity: 100});
-    store.put({id: 222, name: 'water', price: 11.99, quantity: 300});
-  });
-}
+// function createDB() {
+//   idb.open('products', 1, function(upgradeDB) {
+//     var store = upgradeDB.createObjectStore('beverages', {
+//       keyPath: 'id'
+//     });
+//     store.put({id: 123, name: 'coke', price: 10.99, quantity: 200});
+//     store.put({id: 321, name: 'pepsi', price: 8.99, quantity: 100});
+//     store.put({id: 222, name: 'water', price: 11.99, quantity: 300});
+//   });
+// }
 
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    createDB()
-  );
-});
+// self.addEventListener('activate', function(event) {
+//   event.waitUntil(
+//     createDB()
+//   );
+// });
 
-function readDB() {
-  idb.open('products', 1).then(function(db) {
-    var tx = db.transaction(['beverages'], 'readonly');
-    var store = tx.objectStore('beverages');
-    return store.getAll();
-  }).then(function(items) {
-    // Use beverage data
-  });
-}
+// function readDB() {
+//   idb.open('products', 1).then(function(db) {
+//     var tx = db.transaction(['beverages'], 'readonly');
+//     var store = tx.objectStore('beverages');
+//     return store.getAll();
+//   }).then(function(items) {
+//     // Use beverage data
+//   });
+// }
 
 function cacheAssets() {
   return caches.open('cache-v1')
   .then(function(cache) {
     return cache.addAll([
-      '.',
       "/index.html",
       "/css/style.css",
       "/js/app.js",

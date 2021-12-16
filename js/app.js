@@ -294,9 +294,9 @@ function createDB() {
     var store = upgradeDB.createObjectStore('beverages', {
       keyPath: 'id'
     });
-    store.put({id: 123, name: 'coke', price: 10.99, quantity: 200});
-    store.put({id: 321, name: 'pepsi', price: 8.99, quantity: 100});
-    store.put({id: 222, name: 'water', price: 11.99, quantity: 300});
+    store.put({id: 123, description: 'coke', price: 10.99, quantity: 200, date: new Date().getTime()});
+    store.put({id: 321, description: 'pepsi', price: 8.99, quantity: 100, date: new Date().getTime()});
+    store.put({id: 222, description: 'water', price: 11.99, quantity: 300, date: new Date().getTime()});
   });
 }
 
@@ -308,6 +308,25 @@ function readDB() {
   }).then(function(items) {
     // Use beverage data
   });
+}
+
+function addDB() {
+  // dbPromise.then(function(db) {
+  //   var tx = db.transaction('products', 'readwrite');
+  //   var store = tx.objectStore('products');
+  //   var item = {
+  //     name: 'sandwich',
+  //     price: 4.99,
+  //     description: 'A very tasty sandwich',
+  //     created: new Date().getTime()
+  //   };
+  //   store.add(item);
+  //   return tx.complete;
+  // }).then(function() {
+  //   console.log('added item to the store os!');
+  // });
+  // var transaction = db.transaction([], "readwrite");
+  
 }
 
 // var request = window.indexedDB.open("MyTestDatabase", 3);
