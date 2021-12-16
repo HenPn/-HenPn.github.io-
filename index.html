@@ -18,12 +18,6 @@
 
     <script type="text/javascript" src="js/idb.js"></script>
     <script src="serviceWorker.js"></script>
-    <script>
-      async function doDatabaseStuff() {
-        const db = await idb.openDB();
-      }
-    </script>
-    <script type="module" src="app.js"></script>
     <p><button onclick="createDB()">createDB</button></p>
     <p><button onclick="readDB()">readDB</button></p>
     <p><button onclick="getStream()">Grab video</button></p>
