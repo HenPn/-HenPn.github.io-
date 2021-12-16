@@ -285,6 +285,9 @@ function startDetector() {
 }
 
 // DB test
+// import {openDB, DBSchema, IDBPDatabase} from 'idb';
+// import 'idb';
+
 
 function createDB() {
   idb.open('products', 1, function(upgradeDB) {
@@ -298,7 +301,6 @@ function createDB() {
 }
 
 function readDB() {
-  var idb;
   idb.open('products', 1).then(function(db) {
     var tx = db.transaction(['beverages'], 'readonly');
     var store = tx.objectStore('beverages');
@@ -307,3 +309,7 @@ function readDB() {
     // Use beverage data
   });
 }
+
+// var request = window.indexedDB.open("MyTestDatabase", 3);
+// var dbPromise = idb.open('test-db1', 1);
+
